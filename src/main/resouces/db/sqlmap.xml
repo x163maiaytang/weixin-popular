@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SQLMAP>
+ 
+	<DBZONE DBCONFIG="db/dbsource.xml" DATASOURCE="dbsource" SQLMAP="db/sqlMapTemplate.xml"/>
+	
+	<MAPPER PACKAGE="com.fire.game.persistence"/>
+	
+	
+</SQLMAP>	
+ 
+ 

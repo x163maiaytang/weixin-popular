@@ -1,0 +1,18 @@
+syntax = "proto2";
+package awesome;
+option java_package = "com.fire.message.proto";
+option java_outer_classname = "MessageIdConst";
+
+option optimize_for = SPEED;
+
+
+ 
+enum MSGID
+{
+
+	PACKET_CS_LOGIN = 1; // 登陆
+	PACKET_SC_LOGIN = 2; // 
+	PACKET_CS_ACK = 3; // 心跳
+	PACKET_SC_ACK = 4; // 
+}
+ 

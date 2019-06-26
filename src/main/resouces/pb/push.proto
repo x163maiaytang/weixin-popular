@@ -1,0 +1,44 @@
+syntax = "proto2";
+package awesome;
+option java_package = "com.fire.message.proto";
+option java_outer_classname = "PushMessage";
+
+option optimize_for = SPEED;
+
+
+
+//#client ask login
+//@CG
+message CS_LOGIN
+{
+
+	required string token = 1; //
+}
+//#client login result
+//@GC
+message SC_LOGIN
+{
+ 
+	required int32 ret		= 1;	//登录结果
+	optional string msg		= 2;	//
+
+}
+
+
+
+//#client connected Heartbeat
+//@CG
+message CS_ACK
+{
+	optional int32 Isresponse = 1;
+}
+
+//#server connected heartbeat
+//@SC
+message SC_ACK
+{
+	optional int32 Serveransitime = 1;
+}
+
+
+

@@ -1,0 +1,137 @@
+game:
+  maxplayer: 100000
+  reloadpath: 
+  messagedata: true #短信验证码的开关
+  sendlog: true #发送log
+  platform: 
+    key: 72a489ca35e69b73741795d6aaec6982
+    host: http://pc.majiangworld.com/elect/app/index.php
+    version: 1.0
+  useport: true
+  test: false
+  
+  db: 
+    ucenter: '{"id":"1", "name":"ucenter", "ip":"192.168.1.190","port":"3306","dbName":"ucenter","username":"fire","password":"fire123","type":"0"}'
+###############################################################################  
+
+
+server:
+  port: 8099
+  
+#eureka:
+#  instance:
+#  
+#    instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}
+#    lease-renewal-interval-in-seconds: 20 #服务续约任务（心跳）的调用间隔
+#    lease-expiration-duration-in-seconds: 60 #定义服务失效的时间
+#    prefer-ip-address: true
+# 
+#  client:
+#    registry-fetch-interval-seconds: 10 #从eureka服务器注册表中获取注册信息的时间间隔
+#    serviceUrl:
+#       defaultZone: http://peer1:8761/eureka/    
+      
+---
+spring:
+  application:
+    name: WX_PLATFORM
+---    
+spring:
+    mvc:
+      view:
+        # 页面默认前缀目录
+        prefix: /WEB-INF/jsp/
+        # 响应页面默认后缀
+        suffix: .jsp
+
+---    
+#spring:
+#  rabbitmq:
+#    host: 47.92.80.36
+#    port: 5672
+#    username: rabbitadmin
+#    password: 123456
+
+
+---   
+spring:
+  redis:
+    database: 4
+    host: 47.105.48.56
+    port: 6379
+    password: fire123 # 密码（默认为空）
+    timeout: 600000  # 连接超时时长（毫秒）
+      
+    jedis:
+      pool:
+         
+       max-active: 64  # 连接池最大连接数（使用负值表示没有限制）
+       max-wait: -1      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+       max-idle: 8      # 连接池中的最大空闲连接
+       
+       min-idle: 8       # 连接池中的最小空闲连接     
+#    集群配置
+#    cluster:
+#      nodes:
+#        - 47.92.80.36:6379
+#        - 192.168.100.131:6002
+
+#     主从
+#    sentinel:
+#      master: master
+#      nodes: 192.168.1.2:26379   
+
+ribbon:
+  eureka:
+    enabled: true
+  ReadTimeout: 9000
+  ConnectTimeout: 9000
+  MaxAutoRetries: 0 #对当前实例的重试次数
+  MaxAutoRetriesNextServer: 1 #对下个实例的重试次数
+  OkToRetryOnAllOperations: false #对所有操作请求都进行重试
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 36000
+    
+---
+    
+feign: 
+  hystrix: 
+    enabled: false
+  httpclient: 
+    enabled: false
+  okhttp: 
+    enabled: true
+    
+---
+
+ribbon:
+  httpclient: 
+    enabled: false
+  okhttp: 
+    enabled: true
+
+####################################监控#########################################
+
+management:
+  server:
+#    port: 8666
+#    address: 127.0.0.1  #只能本地ip访问
+  endpoints:
+    web:
+#      base-path: /monitor
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+      
