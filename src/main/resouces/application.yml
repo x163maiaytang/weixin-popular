@@ -10,8 +10,8 @@ game:
   useport: true
   test: false
   
-  db: 
-    ucenter: '{"id":"1", "name":"ucenter", "ip":"192.168.1.190","port":"3306","dbName":"ucenter","username":"fire","password":"fire123","type":"0"}'
+#  db: 
+#    ucenter: '{"id":"1", "name":"ucenter", "ip":"192.168.1.190","port":"3306","dbName":"ucenter","username":"fire","password":"fire123","type":"0"}'
 ###############################################################################  
 
 
