@@ -14,9 +14,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
-@EnableEurekaClient // service provider
-@EnableFeignClients // srevice consumer
-@EnableHystrix // 斷路器
+//@EnableEurekaClient // service provider
+//@EnableFeignClients // srevice consumer
+//@EnableHystrix // 斷路器
 public class GameServerStartUp{
 
 	private static final Logger logger = LoggerFactory.getLogger(GameServerStartUp.class);
